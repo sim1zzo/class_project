@@ -1,12 +1,12 @@
-class Account:
+class Account: #this is a superclass of class object, which hold two parameter name and account.
     def __init__(self, name, account):
         self.name = name
         self.account = account
-
+#name and account are passed in the subclass via super()
 class BankAccount(Account):
     def __init__(self, name, account, balance):
         super().__init__(name, account)
-        self.__balance = balance
+        self.__balance = balance # "private instance"
 
     def debit(self, money):
         assert self.__balance > money
@@ -27,7 +27,7 @@ class BankAccount(Account):
     def balance(self, money):
         self.debit(self.__balance)
         self.credit(money)
-
+#creating a static method.
 class Manage:
     @staticmethod
     def transfer(debitAcc, creditAcc, money):
